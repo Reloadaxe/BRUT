@@ -16,7 +16,9 @@ sudo apt-get install php7.3-xdebug
 
 ```bash
 cd /var/www
-git clone "https://github.com/Reloadaxe/BRUT.git"
+sudo mkdir BRUT
+cd BRUT
+git clone "https://github.com/Reloadaxe/BRUT.git" .
 ```
 
 ### Mise en place du vhost
