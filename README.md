@@ -15,7 +15,7 @@ sudo apt-get install php7.3-xdebug
 ### Clonage du projet
 
 ```bash
-mv /var/www
+cd /var/www
 git clone "https://github.com/Reloadaxe/BRUT.git"
 ```
 
