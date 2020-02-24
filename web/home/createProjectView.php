@@ -34,7 +34,7 @@ include_once(__DIR__ . "/navbar.php");
 
 $(".typeahead").on("input", function() {
     var spanId = $(this).data("spanid");
-    $.ajax("/getFolder.php", {
+    $.ajax("/web/home/getFolder.php", {
         method: "POST",
         data: {folderBeginWith: $(this).val()}
     })
@@ -51,7 +51,7 @@ $("#submit").on("click", function() {
         $("#error").text("Veuillez remplir tous les champs");
         return;
     }
-    $.ajax("/createProject.php", {
+    $.ajax("/web/home/createProject.php", {
         method: "POST",
         data: {testFolder: testFolder, toTestFolder: toTestFolder, name: name}
     })
