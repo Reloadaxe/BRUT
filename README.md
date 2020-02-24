@@ -19,6 +19,12 @@ cd /var/www
 sudo mkdir BRUT
 cd BRUT
 sudo git clone "https://github.com/Reloadaxe/BRUT.git" .
+sudo chmod -R 777 .
+```
+
+Pensez à mettre les droits de groupe ( remplacer 'user' par votre utilisateur ) :
+```bash
+sudo chown -R user:www-data .
 ```
 
 ### Mise en place du vhost
