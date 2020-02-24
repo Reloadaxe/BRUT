@@ -1,7 +1,6 @@
 <?php
 
 include_once(__DIR__ . "/navbar.php");
-include_once(__DIR__ . "/testFileParser.php");
 $name = $_GET["name"];
 
 $testsFiles = glob(__DIR__ . "/projects/" . $name . "/tests/*Test.php");
