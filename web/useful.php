@@ -15,3 +15,11 @@ function createTestFile($fileName, $projectName)
 
     file_put_contents($filePath, $testContent);
 }
+
+function getPathOfFileToTest($testFilePath)
+{
+    $testFileName = basename($testFilePath);
+    $name = substr($testFileName, 0, strlen($testFileName) - strlen("Test.php"));
+    $xmlContent = simplexml_load_file(dirname(dirname($testFilePath)) . "/phpunit.xml");
+    return $xmlContent->filter->whitelist->directory . "/$name.php";
+}

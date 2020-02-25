@@ -1,6 +1,7 @@
 <?php
 
 include_once(dirname(__DIR__) . "/home/navbar.php");
+include_once(dirname(__DIR__) . "/useful.php");
 $name = $_GET["name"];
 
 $testsFiles = glob(dirname(dirname(__DIR__)) . "/projects/" . $name . "/tests/*Test.php");
@@ -44,18 +45,37 @@ $testsFiles = glob(dirname(dirname(__DIR__)) . "/projects/" . $name . "/tests/*T
                 <button class="nav-link tabsList<?php echo (count($testsFiles) == 0 ? " active" : ""); ?>" data-for="#addFile">Ajouter un fichier de tests</button>
             </div>
         </div>
-        <div class="col-1">
-            <hr class="v-hr"/>
-        </div>
-        <div class="col-8">
+        <div class="col-9">
             <div class="tab-content" id="v-pills-tabContent">
                 <?php foreach ($testsFiles as $num => $testsFile) : ?>
                     <div class="tab-pane fade<?php echo ($num == 0 ? " show active" : ""); ?>" id="file<?php echo $num ?>">
-                        <div class="container">
-                            <div id="function<?php echo $num ?>" class="editor"><?php echo trim(str_replace(["<?php", "?>"], "", file_get_contents($testsFile))) ?></div>
-                            <script>
-                                editor[<?php echo $num ?>] = ace.edit("function<?php echo $num ?>");
-                            </script>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="container">
+                                    <div id="function<?php echo $num ?>" class="editor"><?php echo trim(str_replace(["<?php", "?>"], "", file_get_contents($testsFile))) ?></div>
+                                    <script>
+                                        editor[<?php echo $num ?>] = ace.edit("function<?php echo $num ?>");
+                                        editor[<?php echo $num ?>].setOptions({
+                                            maxLines: 50
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <hr class="v-hr"/>
+                            </div>
+                            <div class="col-5">
+                                <div class="container">
+                                    <div id="fileToTest<?php echo $num ?>" class="editor"><?php echo trim(str_replace(["<?php", "?>"], "", file_get_contents(getPathOfFileToTest($testsFile)))) ?></div>
+                                    <script>
+                                        var disabledEditor = ace.edit("fileToTest<?php echo $num ?>");
+                                        disabledEditor.setOptions({
+                                            maxLines: 50
+                                        });
+                                        disabledEditor.setReadOnly(true);
+                                    </script>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
