@@ -154,6 +154,6 @@ $("#launchTest").on("click", function() {
     }).done(function(data) {
         window.open(data, "_blank");
     });
-})
+});
 
 </script>

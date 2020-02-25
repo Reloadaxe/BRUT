@@ -13,7 +13,7 @@ foreach (glob(dirname(dirname(__DIR__)) . '/projects/*', GLOB_ONLYDIR) as $dir) 
 <div class="container" style="margin-top: 20px;text-align: center;">
     <div class="row">
         <?php foreach ($projects as $project) : ?>
-            <button class="btn btn-primary project"><?php echo $project ?></button>
+            <button class="btn btn-primary project" style="margin: 10px;"><?php echo $project ?></button>
         <?php endforeach; ?>
     </div>
 </div>

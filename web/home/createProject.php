@@ -1,5 +1,7 @@
 <?php
 
+include_once(dirname(__DIR__) . "/useful.php");
+
 $name = $_POST["name"];
 
 $projectPath = dirname(dirname(__DIR__)) . "/projects/" . $name;
@@ -23,5 +25,13 @@ $xml = str_replace("[?testFolder?]", $projectPath, $xml);
 
 mkdir($projectPath);
 mkdir($projectPath . "/tests");
+
+foreach (scandir($toTestFolder) as $filename) {
+    if ($filename[0] != ".") {
+        $leftPart = explode(".", $filename)[0];
+        createTestFile($leftPart . "Test.php", $name);
+    }
+}
+
 mkdir($projectPath . "/web");
 file_put_contents($projectPath . "/phpunit.xml", $xml);
